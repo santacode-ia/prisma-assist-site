@@ -1,0 +1,7 @@
+node_modules
+dist
+.git
+REFERENCE
+qa
+test-results
+playwright-report

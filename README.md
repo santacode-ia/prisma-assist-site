@@ -52,3 +52,14 @@ Clone este repositório, abra a pasta e peça ao Codex para ler este README e in
 O repositório preserva o código atual e os assets do projeto. Dependências instaladas, builds, evidências locais de QA, ferramentas privadas, planos históricos e prompts completos de terceiros em `REFERENCE/` ficam fora do Git, sem serem apagados da pasta original
 
 Consulte [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Os componentes React Bits são distribuídos somente como parte deste site, sujeitos à licença própria. Nenhuma licença geral adicional é concedida ao código original deste projeto por este README
+
+## Deploy (jv-server)
+
+O site roda em Docker (build do Vite + nginx) atrás do Caddy compartilhado do servidor, em `prismaassist.com` e `www.prismaassist.com`. O sistema fica em `app.prismaassist.com` (repositório `prisma-assist`).
+
+```sh
+git pull --ff-only
+docker compose up -d --build
+```
+
+O container entra na rede `infra_default` com o alias `prismaassist-site`; o bloco correspondente fica no `~/caddy/Caddyfile` do servidor

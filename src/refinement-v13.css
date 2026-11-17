@@ -1,0 +1,25 @@
+/* Three distinct planes, inward-facing wings, native foreground text. */
+.product-stage{perspective:1350px;perspective-origin:50% 38%;height:430px}
+.flow-panel{left:6px;top:62px;transform:translateZ(-175px) rotateY(-30deg) rotateZ(-7deg);transform-origin:100% 50%;background:linear-gradient(180deg,#1d292e,#1a252b);box-shadow:0 31px 42px -15px #162e4973,0 10px 22px -13px #10263a55,inset 0 1px 0 #c6dce51a}
+.operation-panel{right:6px;top:62px;transform:translateZ(-175px) rotateY(30deg) rotateZ(7deg);transform-origin:0% 50%;background:linear-gradient(180deg,#1d292e,#1a252b);box-shadow:0 31px 42px -15px #162e4973,0 10px 22px -13px #10263a55,inset 0 1px 0 #c6dce51a}
+.inbox-rig:before{inset:10px 7px 0;box-shadow:0 38px 46px -9px #152f4b66,0 12px 24px -8px #0e263c50,0 2px 8px #10283d18}
+.benefits-carousel{max-width:800px;margin:2px auto 0;padding:0 20px}
+.benefits-carousel .carousel-stage{overflow:visible;box-shadow:none}
+.benefits-carousel .carousel-container{gap:10px}
+.benefit-panel{padding:20px 23px}
+.benefit-title h2{font-size:16px}.benefit-title>svg{width:19px;height:19px}
+.benefit-panel>p{font-size:12px;line-height:1.8;margin:12px 0 16px}
+.benefit-footer{font-size:9px;gap:10px}.benefit-impact{gap:23px}
+.benefits-carousel .carousel-controls{gap:22px;--carousel-ink:#263e55;--carousel-muted:#3b536b}
+.benefits-carousel .carousel-arrow{color:#edf3f8;width:36px;height:36px}
+.benefits-carousel .carousel-counter{font-size:10px;gap:7px;min-width:49px;justify-content:center}
+.benefits-carousel .carousel-counter-current{font-size:11px}
+.benefit-current{font-size:9px;margin-top:6px;color:#2a435b}
+.institutional-area{margin-top:42px;padding-top:42px}
+@media(min-width:1700px){.product-stage{height:440px}.flow-panel{left:26px}.operation-panel{right:26px}.benefits-carousel{margin-top:6px}}
+@media(max-height:800px) and (min-width:1251px){.product-stage{height:430px}}
+@media(min-width:1100px) and (max-width:1250px){.flow-panel{left:-22px}.operation-panel{right:-22px}}
+@media(min-width:1100px) and (max-width:1399px){.flow-panel{left:-35px}.operation-panel{right:-35px}}
+@media(min-width:801px) and (max-width:1099px){.product-stage{height:auto;perspective:none}.flow-panel,.operation-panel{inset:auto;transform:none}.benefits-carousel{margin-top:26px}}
+@media(max-width:800px){.product-stage{height:auto;perspective:none}.flow-panel,.operation-panel{inset:auto;transform:none}.benefits-carousel{width:calc(100% - 40px);max-width:620px;margin-top:27px;padding:0}.benefits-carousel .carousel-viewport,.benefits-carousel .carousel-slide{height:236px!important}.benefit-panel{padding:18px 16px}.benefit-title{gap:8px}.benefit-title h2{font-size:14px}.benefit-title>svg{width:17px;height:17px}.benefit-panel>p{font-size:11px;line-height:1.8}.benefit-footer{font-size:8px;gap:6px;flex-wrap:wrap}.benefit-impact{gap:10px}.benefits-carousel .carousel-arrow{width:42px;height:42px}.institutional-area{margin-top:35px;padding-top:0}}
+@media(min-width:1100px) and (min-height:680px) and (max-height:759px){.institutional-stack .institutional-stack-card{min-height:0;padding:24px 30px}.institutional-block h2{font-size:28px}.editorial-heading p,.management-heading>p{font-size:12px;line-height:1.75;margin-top:15px}.management-heading>p{margin-top:0}.intelligence-flow{margin-top:38px;margin-bottom:30px}.integration-block{column-gap:32px;row-gap:12px}.integration-principle{margin-top:18px;padding-top:16px}.integration-route>li{padding-bottom:11px}.integration-conditions{padding-top:11px}.platform-preview{margin-top:22px}.platform-layout{min-height:236px}}

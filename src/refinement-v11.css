@@ -1,0 +1,15 @@
+/* Native-size foreground UI: shadows are separate geometry, never a filter on text. */
+.product-stage{width:calc(100% - 80px);max-width:1280px;left:auto;margin:38px auto 0;height:450px;transform:none;perspective:1800px;perspective-origin:50% 38%;isolation:auto}
+.inbox-rig{left:calc(50% - 300px);top:12px;width:600px;height:354px;transform:translateZ(0);filter:none;z-index:4}
+.inbox-rig:before{content:'';position:absolute;inset:20px 12px 0;z-index:-1;border-radius:18px;box-shadow:0 32px 40px -12px #25354455,0 12px 26px -10px #25354430;pointer-events:none}
+.inbox-tilt .tilted-card__body{will-change:auto;transform-style:flat}
+.inbox-tilt .tilted-card__shadow,.inbox-tilt .tilted-card__glare,.inbox-tilt .tilted-card__rim,.inbox-tilt .tilted-card__edge{display:none}
+.inbox-rig .inbox-panel{filter:none;backdrop-filter:none;opacity:1;box-shadow:none;transform:none}
+.inbox-tilt .tilted-card__face{backface-visibility:visible}
+.flow-panel{left:18px;top:58px;transform:translateZ(-90px) rotateY(19deg) rotateZ(-4deg);transform-origin:right center;box-shadow:0 24px 46px -20px #273b4e60}
+.operation-panel{right:18px;top:69px;transform:translateZ(-90px) rotateY(-19deg) rotateZ(4deg);transform-origin:left center;box-shadow:0 24px 46px -20px #343b575a}
+.support-grid{max-width:1010px;gap:13px;margin:24px auto 0}.support-card{min-height:188px}.hero:before{bottom:auto;height:1180px;max-height:none}.hero-footer{max-width:1100px;margin:0 auto;padding:24px 20px 30px;border-top:1px solid #b4bfc82b}
+@media(min-width:1700px){.product-stage{max-width:1420px;height:462px;margin-top:48px;transform:none;margin-bottom:0}.inbox-rig{width:680px;left:calc(50% - 340px)}.flow-panel{left:36px}.operation-panel{right:36px}.support-grid{max-width:1030px;gap:13px}.support-card{padding:23px 22px;min-height:197px}.hero:before{height:1330px}}
+@media(max-height:800px) and (min-width:1251px){.product-stage{height:450px;margin:25px auto 0;transform:none}.support-grid{margin-top:20px}}
+@media(max-width:1250px) and (min-width:801px){.product-stage{width:calc(100% - 40px);left:auto;margin:32px auto 0;transform:none;height:450px}.inbox-rig{width:540px;left:calc(50% - 270px)}.flow-panel{width:270px;left:-6px;transform:translateZ(-110px) rotateY(22deg) rotateZ(-4deg)}.operation-panel{width:270px;right:-6px;transform:translateZ(-110px) rotateY(-22deg) rotateZ(4deg)}.support-grid{width:calc(100% - 72px);margin:22px auto 0}.support-card{padding:20px 18px}}
+@media(max-width:800px){.product-stage{display:flex;flex-direction:column;width:calc(100% - 40px);max-width:620px;height:auto;left:auto;margin:30px auto 0;transform:none;perspective:none;gap:18px}.inbox-rig{position:relative;width:100%;height:378px;left:auto;top:auto;transform:none;filter:none}.inbox-rig:before{box-shadow:0 20px 25px -15px #25354438}.flow-panel,.operation-panel{inset:auto;transform:none}.support-grid{width:calc(100% - 40px);max-width:620px;margin:24px auto 0;grid-template-columns:1fr}.hero:before{height:2350px}.hero-footer{flex-direction:column;gap:12px;padding:25px 20px}}

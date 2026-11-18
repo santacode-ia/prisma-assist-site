@@ -23,7 +23,8 @@ try {
   await page.keyboard.press('ArrowLeft');
   await expect(current).toContainText('Como funciona');
   // The original component pauses autoplay while keyboard focus is inside
-  await page.locator('body').click({ position: { x: 1, y: 1 } });
+  await page.locator('.carousel-container').evaluate(e => e.blur());
+  await page.mouse.move(2, 2);
   for (const label of ['Impacto na', 'Supervis', 'Como funciona']) {
     await expect(current).toContainText(label, { timeout: 4500 });
   }

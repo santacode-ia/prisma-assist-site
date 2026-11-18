@@ -232,7 +232,9 @@ const TiltedCard = ({
       const ry = state.ry;
       const radiansX = (rx * Math.PI) / 180;
       const radiansY = (ry * Math.PI) / 180;
-      body.style.transform = `translate3d(0, ${state.ty.toFixed(2)}px, 0) rotateX(${rx.toFixed(3)}deg) rotateY(${(ry + state.flip).toFixed(3)}deg) scale(${scale.toFixed(4)})`;
+      // Release the identity compositor layer at the same precision as the spring output.
+      const atRest = Math.abs(rx) < 0.0005 && Math.abs(ry + state.flip) < 0.0005 && Math.abs(state.ty) < 0.005 && Math.abs(scale - 1) < 0.00005;
+      body.style.transform = atRest ? 'none' : `translate3d(0, ${state.ty.toFixed(2)}px, 0) rotateX(${rx.toFixed(3)}deg) rotateY(${(ry + state.flip).toFixed(3)}deg) scale(${scale.toFixed(4)})`;
       body.style.opacity = opacity < 1 ? smoother(opacity).toFixed(3) : '';
       body.style.setProperty('--tc-px', (Math.sin(radiansY) * s.parallax).toFixed(4));
       body.style.setProperty('--tc-py', (-Math.sin(radiansX) * s.parallax).toFixed(4));

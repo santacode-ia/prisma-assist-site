@@ -1,0 +1,44 @@
+/* Desktop correction only: full bleed background; native, unscaled product text. */
+@media(min-width:1251px){
+ .canvas{padding:0}
+ .hero{width:100%;max-width:none;margin:0;border:0;border-radius:0;box-shadow:none;min-height:100svh}
+ .header{height:84px;margin-inline:clamp(36px,3.6vw,80px);color:#000}
+ .nav-action,.brand{color:#000}
+ .header nav button{color:#627071}
+ .header nav button:hover{color:#1d3430}
+ .brand-logo{width:27px;height:24px;background:none;border-radius:0;object-fit:contain}
+ .brand-wordmark{align-items:center}
+ .brand-wordmark strong{font-size:15.3px}
+ .brand-wordmark small{font-size:6px;margin-top:2px}
+ .brand{gap:10px}
+ .hero-copy{padding:42px 24px 0;color:#000}
+ .hero-copy h1{font-size:clamp(42px,3.4vw,62px);max-width:1150px;line-height:1.12;letter-spacing:-.055em;color:#000;text-wrap:balance}
+ .hero-copy p{color:#000;margin:24px auto 24px;line-height:1.65}
+ .primary{color:#fff}
+ .product-stage{margin-top:28px;height:500px;width:calc(100% - 96px)}
+ .inbox-rig{top:6px}
+ .flow-panel,.operation-panel{top:25px}
+ .hero-footer,.hero-footer>*{color:#000}
+ /* Editorial copy on light surfaces; demo interfaces retain their own colors. */
+ .editorial-label,.editorial-note,.institutional-block h2,.editorial-heading p,.editorial-description,.management-heading>p,
+ .intelligence-flow h3,.intelligence-flow p,.continuity-note,.integration-principle{color:#000}
+ .institutional-area :is(h2,h3,p,small,.editorial-label,.editorial-note,.continuity-note):not([data-ui] *){color:#000}
+}
+@media(min-width:1251px) and (max-height:800px){
+ .header{height:64px}
+ .hero-copy{padding-top:22px}
+ .hero-copy h1{font-size:43px;line-height:1.1}
+ .hero-copy p{margin:13px auto 15px;font-size:12px;line-height:1.6}
+ .primary{padding:11px 18px}
+ .product-stage{margin-top:22px;height:480px}
+ .flow-panel,.operation-panel{top:12px}
+}
+.testar-access{display:flex;justify-content:center;padding:0 24px 26px;scroll-margin-top:24px}
+.testar-cta{min-height:48px;min-width:176px;justify-content:center;font-weight:700;letter-spacing:.05em;font-size:12px;text-decoration:none}
+.testar-cta:hover{background:#436152}
+.testar-page{min-height:100svh;color:#000;background:radial-gradient(ellipse at 20% 90%,#c7d3e2,transparent 70%),#f4f6fa}
+.testar-placeholder{max-width:700px;margin:clamp(60px,12vh,140px) auto 0;padding:0 32px 80px;text-align:center}
+.testar-status{font-size:11px;letter-spacing:.12em;font-weight:600}
+.testar-placeholder h1{font-size:clamp(32px,3.4vw,48px);font-weight:500;line-height:1.15;letter-spacing:-.04em}
+.testar-placeholder>p:not(.testar-status){font-size:15px;line-height:1.8;margin-bottom:30px}
+.testar-placeholder .primary{min-height:48px}

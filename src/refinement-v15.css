@@ -1,0 +1,37 @@
+/* Native panel dimensions; the foreground stays at 1:1 pixel scale */
+.brand-wordmark{display:flex;flex-direction:column;align-items:flex-start}
+.brand-wordmark strong,.brand-wordmark small{width:max-content;white-space:nowrap}
+.brand-wordmark strong>span,.brand-wordmark small>span{letter-spacing:0}
+.brand-wordmark small{font-size:8px;line-height:1.2;margin-top:4px}
+@media(min-width:1100px){
+ .product-stage{max-width:1440px;width:calc(100% - 56px);height:518px;perspective:1500px;perspective-origin:50% 40%;transform-style:preserve-3d;transform:none;margin-bottom:0}
+ .inbox-rig{width:736px;height:430px;left:calc(50% - 368px);top:12px;transform:translateZ(0);z-index:4}
+ .inbox-rig .inbox-grid{height:354px}
+ .inbox-rig:before{inset:10px 0 0;border-radius:18px;box-shadow:0 44px 56px -14px #10263d80,0 16px 32px -8px #0b1d305e,-28px 10px 28px -18px #0b162d80,28px 10px 28px -18px #0b162d80}
+ .flow-panel,.operation-panel{width:382px;top:76px;z-index:1;box-shadow:0 38px 48px -18px #132a466e,0 15px 25px -12px #10263e66,inset 0 1px 0 #d5e4e41a}
+ .flow-panel{left:-135px;transform:translateZ(-130px) rotateY(-24deg) rotateZ(6deg);transform-origin:100% 50%}
+ .operation-panel{right:-135px;transform:translateZ(-130px) rotateY(24deg) rotateZ(-6deg);transform-origin:0% 50%}
+ .flow-panel:after,.operation-panel:after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:inherit}
+ .flow-panel:after{background:linear-gradient(90deg,transparent 72%,#09132145)}
+ .operation-panel:after{background:linear-gradient(270deg,transparent 72%,#09132145)}
+ .flow-panel .panel-body,.operation-panel .panel-body{padding:25px 23px}
+ .operation-panel .panel-body{padding-left:38px}
+ .operation-panel .panel-top{padding-left:32px}
+ .flow-panel .node{padding:15px 12px}
+ .flow-panel .connector{height:19px}.flow-panel .connector.branch{height:38px}
+ .panel-top{height:49px;font-size:11px}
+ .inbox-rig .inbox-grid{height:348px}
+ .panel-body h2{font-size:15px}
+ .node{font-size:12px}.node small{font-size:9px}
+ .inbox-rig .list-heading{padding-top:18px;padding-bottom:13px}
+ .inbox-rig .list-heading h2{font-size:17px}
+ .inbox-rig .conversation{padding:14px 14px}
+ .inbox-rig .conversation-copy strong,.inbox-rig .chat-heading strong{font-size:10px}
+ .inbox-rig .conversation-copy>span{font-size:9px}
+ .inbox-rig .chat-heading{height:68px}
+ .inbox-rig .messages{padding:14px 18px 9px;gap:10px}
+ .inbox-rig .bubble{font-size:10px;padding:10px 12px}
+ .operation-stats{margin-top:28px}.team-member{margin-top:17px}.activity{margin-top:22px;padding-top:19px}
+}
+@media(min-width:1700px){.product-stage{max-width:1580px;height:530px}.inbox-rig{width:828px;left:calc(50% - 414px)}.flow-panel{left:-55px}.operation-panel{right:-55px}}
+@media(min-width:1100px) and (max-width:1250px){.product-stage{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:860px;height:auto;perspective:none}.inbox-rig{position:relative;grid-column:1/-1;order:-1;left:auto;top:auto;justify-self:center;width:736px;max-width:100%;transform:none}.flow-panel,.operation-panel{position:relative;inset:auto;transform:none;width:100%;align-self:start}.flow-panel:after,.operation-panel:after{display:none}.operation-panel .panel-body{padding-left:23px}.operation-panel .panel-top{padding-left:17px}.reference-carousel{margin-top:25px}}

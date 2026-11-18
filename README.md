@@ -57,9 +57,12 @@ Consulte [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Os componentes React 
 
 O site roda em Docker (build do Vite + nginx) atrás do Caddy compartilhado do servidor, em `prismaassist.com` e `www.prismaassist.com`. O sistema fica em `app.prismaassist.com` (repositório `prisma-assist`).
 
+No clone de produção, na `main`:
+
 ```sh
-git pull --ff-only
-docker compose up -d --build
+./deploy.sh            # git pull, build, sobe e confere o site
+./deploy.sh status     # estado do container e checagem pública
+./deploy.sh logs       # logs do nginx
 ```
 
 O container entra na rede `infra_default` com o alias `prismaassist-site`; o bloco correspondente fica no `~/caddy/Caddyfile` do servidor

@@ -63,6 +63,7 @@ const TiltedCard = ({
   displayOverlayContent = false,
   overlayDepth = 30,
   children,
+  stabilizeContent = false,
   backContent = null,
   flipOnClick = true,
   flipped,
@@ -533,7 +534,7 @@ const TiltedCard = ({
               }}
             />
           )}
-          {children}
+          {!stabilizeContent && children}
           <span className="tilted-card__glare" aria-hidden="true" />
           <span className="tilted-card__rim" aria-hidden="true" />
           <span className="tilted-card__edge" aria-hidden="true" />
@@ -552,6 +553,7 @@ const TiltedCard = ({
           </div>
         )}
       </div>
+      {stabilizeContent && <div className="tilted-card__stable-content">{children}</div>}
       {showTooltip && captionText && (
         <figcaption ref={captionRef} className="tilted-card__caption">
           {captionText}

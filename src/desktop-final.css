@@ -6,16 +6,25 @@
  .nav-action,.brand{color:#000}
  .header nav button{color:#627071}
  .header nav button:hover{color:#1d3430}
- .brand-logo{width:27px;height:24px;background:none;border-radius:0;object-fit:contain}
+ .brand-logo{width:24px;height:21px;background:none;border-radius:0;object-fit:contain}
  .brand-wordmark{align-items:center}
- .brand-wordmark strong{font-size:15.3px}
- .brand-wordmark small{font-size:6px;margin-top:2px}
+ .brand-wordmark strong{font-size:18px}
+ .brand-wordmark small{font-size:7px;margin-top:2px}
  .brand{gap:10px}
+ .header nav a{font-size:12px;color:#627071;padding:10px 0}
+ .header nav a:hover{color:#1d3430}
+ .product-hero-block{display:flow-root}
+ .header nav{left:0;right:0;transform:none;justify-content:center;pointer-events:none}
+ .header nav>*{pointer-events:auto}
+ .inbox-rig{width:round(nearest,clamp(736px,44vw,960px),2px);margin-left:calc(round(nearest,clamp(736px,44vw,960px),2px) / -2)}
+ .inbox-tilt .tilted-card__stable-content{position:absolute;inset:0;z-index:1;transform:none;filter:none;backdrop-filter:none}
+ .inbox-tilt .tilted-card__front{background:#202a2d;border:1px solid #6c817f}
+ .inbox-tilt .tilted-card__stable-content .inbox-panel{background:#202a2d}
  .hero-copy{padding:42px 24px 0;color:#000}
  .hero-copy h1{font-size:clamp(42px,3.4vw,62px);max-width:1150px;line-height:1.12;letter-spacing:-.055em;color:#000;text-wrap:balance}
  .hero-copy p{color:#000;margin:24px auto 24px;line-height:1.65}
  .primary{color:#fff}
- .product-stage{margin-top:28px;height:500px;width:calc(100% - 96px)}
+ .product-stage{margin-top:16px;height:500px;width:calc(100% - 96px)}
  .inbox-rig{top:6px}
  .flow-panel,.operation-panel{top:25px}
  .hero-footer,.hero-footer>*{color:#000}
@@ -30,7 +39,7 @@
  .hero-copy h1{font-size:43px;line-height:1.1}
  .hero-copy p{margin:13px auto 15px;font-size:12px;line-height:1.6}
  .primary{padding:11px 18px}
- .product-stage{margin-top:22px;height:480px}
+ .product-stage{margin-top:19px;height:480px}
  .flow-panel,.operation-panel{top:12px}
 }
 .testar-access{display:flex;justify-content:center;padding:0 24px 26px;scroll-margin-top:24px}

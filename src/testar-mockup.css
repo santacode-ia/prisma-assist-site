@@ -76,5 +76,28 @@
 .demo-manual-compose>div:last-child{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .demo-compose-icons{display:flex;align-items:center;gap:13px}
 .demo-manual-compose button{border:1px solid #82b5a7;border-radius:8px;background:#436152;color:#e4eae7;font-size:11px;font-weight:600;padding:9px 11px}
+.demo-transcript{overflow-y:auto;overscroll-behavior:contain}
+.demo-business-chat{min-height:0}
+.demo-chat-title,.demo-manual-compose{flex-shrink:0}
+.demo-message{flex-shrink:0;overflow-wrap:anywhere}
+.demo-input input{width:100%;min-width:0;border:0;background:transparent;color:inherit;font:inherit;outline:none}
+.demo-input:focus-within{outline:2px solid #90c9b7;outline-offset:1px}
+.demo-input input::placeholder{color:#c8d4d0}
+.demo-send-status,.demo-helper{padding:0 12px;font-size:10px;color:#c8d4d0;flex-shrink:0}
+.demo-send-status{padding-top:5px}
+.demo-helper{padding-bottom:7px}
+.demo-client-compose button:not(:disabled){cursor:pointer}
+.demo-client-compose button:disabled{opacity:.5}
+.demo-empty{font-size:12px;line-height:1.6;color:#c8d4d0;margin:0}
+.demo-error{padding:8px 12px;font-size:11px;line-height:1.5;color:#ffdcce;flex-shrink:0}
+.demo-error button{color:inherit;background:transparent;border:1px solid currentColor;border-radius:5px;margin:4px;padding:4px}
+.demo-limit{max-width:680px;margin:28px auto 0;padding:20px 24px;text-align:center;background:#dcebe3;border:1px solid #94a7a1;border-radius:14px;color:#263638}
+.demo-limit h2{font-size:20px;margin:0 0 10px}.demo-limit p{font-size:13px;line-height:1.6}
+.demo-limit button{background:#436152;border:0;border-radius:8px;color:#e4eae7;padding:11px 18px;font:inherit;font-size:12px}
+.demo-limit small{display:block;font-size:11px;margin-top:9px}
+.demo-intro{position:relative}
+.demo-mode-control{position:absolute;right:32px;top:0;display:flex;flex-direction:column;gap:5px;text-align:left;color:#627071;font-size:10px}
+.demo-mode-control select{font-family:inherit;font-size:11px;color:#31483e;border:1px solid #b7c9c3;border-radius:8px;padding:7px 9px;background:#edf2f7;max-width:190px}
+.demo-mode-control select:focus-visible{outline:2px solid #436152;outline-offset:2px}
 @media(min-width:1500px){.demo-panel-title h2{font-size:19px}.demo-message{font-size:15px}.demo-business-chat .demo-message{font-size:14px}.demo-timeline h3{font-size:14px}.demo-timeline p{font-size:13px}.demo-handoff strong{font-size:14px}.demo-handoff span{font-size:13px}.demo-chat-title strong,.demo-selected strong,.demo-secretary strong{font-size:14px}.demo-chat-title div>span,.demo-selected p,.demo-secretary div>span{font-size:12px}.demo-draft{font-size:14px}}
 @media(min-width:1700px){.demo-panels{gap:20px}.demo-panel-title{min-height:65px}.demo-timeline li{min-height:100px}.demo-step-icon{width:48px;height:48px}.demo-timeline{padding-top:25px}}

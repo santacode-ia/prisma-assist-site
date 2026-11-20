@@ -1,0 +1,247 @@
+/* Homepage only. Desktop and /testar retain their approved styles and behavior. */
+.canvas .mobile-nav-toggle{display:none}
+.canvas .home-copy-mobile,.canvas .mobile-attention-state{display:none}
+.canvas .mobile-operation-column{display:contents}
+@media (max-width:800px){
+ .canvas{padding:0}
+ .canvas .hero{width:100%;max-width:none;min-height:100svh;margin:0;border:0;border-radius:0;box-shadow:none}
+ .canvas .header{height:auto;min-height:112px;margin:0 16px;display:flex;flex-wrap:wrap;align-content:center;gap:8px;justify-content:space-between}
+ .canvas .brand{gap:8px;color:#000}
+ .canvas .brand-logo{width:24px;height:24px;background:none;border-radius:0;object-fit:contain}
+ .canvas .brand-wordmark strong{font-size:18px}
+ .canvas .brand-wordmark small{font-size:7px;margin-top:2px}
+ .canvas .nav-action{min-height:44px;padding:9px 11px;font-size:10px;gap:8px;color:#000}
+ .canvas .header nav{position:static;inset:auto;transform:none;order:3;width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
+ .canvas .header nav :is(button,a){min-width:0;min-height:44px;padding:12px 0;display:flex;align-items:center;justify-content:center;font-size:10.5px;line-height:1.3;color:#627071}
+ .canvas .hero-copy{padding:20px 16px 0;color:#000}
+ .canvas .hero-copy h1{max-width:560px;font-size:clamp(30px,8.3vw,40px);line-height:1.13;letter-spacing:-.055em;color:#000;text-wrap:balance}
+ .canvas .hero-copy p{max-width:520px;margin:16px auto 0;font-size:14px;line-height:1.65;color:#000}
+ .canvas .desktop-break{display:none}
+ .canvas .product-hero-block{display:flow-root}
+ .canvas .product-stage{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:14px 12px;width:calc(100% - 32px);max-width:560px;height:auto;margin:28px auto 0;left:auto;transform:none;perspective:none;transform-style:flat;isolation:isolate;scroll-margin-top:16px}
+ .canvas .inbox-rig{position:relative;grid-column:1/-1;grid-row:1;width:100%;height:444px;left:auto;top:auto;margin:0;max-width:none;transform:none;z-index:4;filter:none;order:0}
+ .canvas .inbox-rig .inbox-panel{height:100%;width:100%;border-color:#6c817f;background:#202a2d}
+ .canvas .inbox-rig .inbox-grid{display:grid;grid-template-columns:42% minmax(0,1fr);grid-template-rows:1fr;height:368px}
+ .canvas .inbox-rig .chat{display:flex;flex-direction:column;min-width:0;min-height:0}
+ .canvas .inbox-rig .chat-heading{display:flex;height:auto;min-height:60px;padding:9px 8px;gap:5px;flex-shrink:0}
+ .canvas .inbox-rig .chat-heading strong{font-size:12px;line-height:1.4}
+ .canvas .inbox-rig .chat-heading small{font-size:9px;line-height:1.5}
+ .canvas .inbox-rig .messages{display:flex;overflow-y:auto;overscroll-behavior:contain;min-height:0;padding:10px 8px;gap:9px}
+ .canvas .inbox-rig .messages>*{flex-shrink:0}
+ .canvas .inbox-rig .bubble{max-width:100%;font-size:11px;line-height:1.55;padding:8px}
+ .canvas .inbox-rig .bubble time{font-size:8px}
+ .canvas .inbox-rig .message-author,.canvas .inbox-rig .context{font-size:9px;line-height:1.5}
+ .canvas .inbox-rig .today{font-size:9px}
+ .canvas .inbox-rig .chat-controls{display:flex;flex-direction:column;align-items:stretch;gap:6px;padding:8px;font-size:9px;line-height:1.5;flex-shrink:0}
+ .canvas .inbox-rig .chat-controls button{justify-content:center;min-height:44px;font-size:10px}
+ .canvas .inbox-rig .conversation-list{border-right:1px solid var(--line);min-width:0;min-height:0}
+ .canvas .inbox-rig .panel-top{height:40px;padding:0 10px;font-size:11px}
+ .canvas .inbox-rig .workspace{display:flex;font-size:8px!important}
+ .canvas .inbox-rig .list-heading{padding:12px 10px 8px}
+ .canvas .inbox-rig .list-heading h2{font-size:17px}
+ .canvas .inbox-rig .list-tabs{padding:0 10px 10px;gap:8px;font-size:9px;flex-wrap:wrap}
+ .canvas .inbox-rig .conversation{min-height:68px;padding:10px 9px;gap:6px}
+ .canvas .inbox-rig .conversation .avatar{display:none}
+ .canvas .inbox-rig .conversation-copy strong{display:block;font-size:11px;font-weight:500;line-height:1.4}
+ .canvas .inbox-rig .conversation-copy time{display:block;font-size:8px;margin-top:2px}
+ .canvas .inbox-rig .conversation-copy>span{font-size:10px;margin:4px 0;line-height:1.4}
+ .canvas .inbox-rig .conversation-copy small{font-size:9px;line-height:1.4}
+ .canvas .inbox-rig .list-footer{font-size:8px;left:10px;bottom:10px}
+ .canvas .inbox-rig .inbox-bottom{padding:10px;font-size:8px;gap:8px;line-height:1.5}
+ .canvas .inbox-bottom>span:last-child{display:inline}
+ .canvas .flow-panel,.canvas .operation-panel{position:relative;inset:auto;width:100%;max-width:none;transform:none;z-index:1;background:#202a2d;display:flex;flex-direction:column;align-self:stretch}
+ .canvas .flow-panel{grid-column:1;grid-row:2}
+ .canvas .operation-panel{grid-column:2;grid-row:2}
+ .canvas .flow-panel .panel-top,.canvas .operation-panel .panel-top{min-height:48px;height:auto;font-size:11px;line-height:1.5;padding:10px;flex-shrink:0}
+ .canvas .flow-panel .panel-top>span,.canvas .operation-panel .panel-top>span{gap:6px}
+ .canvas .flow-panel .panel-top>svg,.canvas .operation-panel .panel-top>svg{display:none}
+ .canvas .flow-panel .panel-top svg,.canvas .operation-panel .panel-top svg{flex-shrink:0}
+ .canvas .flow-panel .panel-body,.canvas .operation-panel .panel-body{width:100%;margin:0;padding:14px 10px;flex:1}
+ .canvas .panel-body h2{font-size:12px;line-height:1.5;margin-bottom:6px}
+ .canvas .flow-panel .live,.canvas .operation-panel .muted{font-size:9px;line-height:1.5}
+ .canvas .flow{margin-top:14px}
+ .canvas .flow-panel .node{display:grid;grid-template-columns:13px minmax(0,1fr) 8px;font-size:11px;padding:10px 7px;gap:4px;line-height:1.5}
+ .canvas .node span{min-width:0;overflow-wrap:anywhere}
+ .canvas .node small{font-size:9px;line-height:1.5}
+ .canvas .node>svg{width:13px}
+ .canvas .node>svg:last-child:not(:first-child){width:8px}
+ .canvas .flow-panel .connector{height:16px;margin-left:14px}
+ .canvas .flow-panel .connector.branch{height:44px}
+ .canvas .branch span{font-size:9px;line-height:1.5;padding-left:8px}
+ .canvas .panel-note{font-size:9px;line-height:1.6;gap:6px;padding-top:12px}
+ .canvas .panel-note svg{flex-shrink:0}
+ .canvas .operation-stats{display:grid;grid-template-columns:1fr;gap:10px;margin:18px 0 0;width:auto;text-align:left}
+ .canvas .operation-stats>div{display:flex;flex-direction:row;align-items:center;gap:8px;min-height:32px}
+ .canvas .operation-stats strong{font-size:24px;min-width:22px}
+ .canvas .operation-stats span{font-size:10px;line-height:1.4;margin:0}
+ .canvas .allocation{margin:13px 0}
+ .canvas .team-label{font-size:10px;line-height:1.5;gap:6px;margin-top:14px;flex-wrap:wrap}
+ .canvas .team-label>span{font-size:9px}
+ .canvas .team-member{gap:6px;margin-top:10px}
+ .canvas .team-member .avatar{width:24px;height:24px;flex-basis:24px;font-size:9px}
+ .canvas .team-member strong{font-size:10px}
+ .canvas .team-member small{font-size:9px;line-height:1.5}
+ .canvas .activity{gap:6px;margin-top:13px;padding-top:12px}
+ .canvas .activity strong{font-size:10px;line-height:1.5}
+ .canvas .activity p{font-size:9px;line-height:1.5}
+ .canvas .operation-panel .panel-note{font-size:9px;line-height:1.5;margin-top:12px;padding-top:12px}
+ .canvas .testar-access{padding:24px 16px 26px}
+ .canvas .testar-cta{min-height:48px;min-width:176px;font-size:12px}
+ .canvas .reference-carousel{width:calc(100% - 32px);max-width:560px;margin:0 auto;padding:0}
+ .canvas .reference-carousel .carousel-arrow{width:44px;height:44px}
+ .canvas .reference-carousel .carousel-bar{min-height:44px}
+ .canvas .reference-carousel .carousel-viewport,.canvas .reference-carousel .carousel-slide{height:260px!important}
+ .canvas .reference-carousel .carousel-card{padding:18px;gap:12px}
+ .canvas .reference-carousel .carousel-icon{width:24px;height:24px}
+ .canvas .reference-carousel .carousel-title{font-size:16px}
+ .canvas .reference-carousel .carousel-description{font-size:13px;line-height:1.65}
+ .canvas .institutional-area{margin-top:32px;padding-inline:20px}
+ .canvas .institutional-static .institutional-block{padding-block:40px}
+ .canvas .institutional-stack .institutional-stack-card{height:auto;min-height:0;padding:28px 16px;border-radius:16px}
+ .canvas .institutional-stack .institutional-block{min-width:0}
+ .canvas .institutional-stack .platform-view-heading{flex-wrap:wrap}
+ .canvas .institutional-stack .integration-diagram{min-width:0}
+ .canvas .editorial-heading p,.canvas .editorial-description,.canvas .management-heading>p{font-size:14px;line-height:1.75}
+ .canvas .institutional-block h2{font-size:28px;line-height:1.2}
+ .canvas .intelligence-flow p{font-size:14px;line-height:1.75}
+ .canvas .route-body p,.canvas .route-body blockquote{font-size:13px;line-height:1.7}
+ .canvas .platform-nav button{min-height:44px}
+ .canvas .platform-content{min-width:0}
+ .canvas .preview-history li{flex-wrap:wrap}
+ .canvas .preview-history small{margin-left:25px}
+ .canvas .hero-footer{padding-inline:20px;font-size:11px;line-height:1.6}
+}
+
+
+
+/* Compact first viewport. All original content stays mounted; dense regions scroll locally. */
+@media (max-width:800px){
+ .canvas .header{height:60px;min-height:60px;flex-wrap:nowrap;gap:8px;z-index:10}
+ .canvas .mobile-nav-toggle{order:3;display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;border:1px solid #b7c5c0;border-radius:10px;background:#ffffff50;color:#263638}
+ .canvas .header nav{display:none;position:absolute;top:58px;left:auto;right:0;width:250px;padding:8px;grid-template-columns:1fr;gap:0;background:#f4f6fa;border:1px solid #b7c5c0;border-radius:13px;box-shadow:0 15px 30px -20px #26364735;transform:none;z-index:10}
+ .canvas .header nav[data-open=true]{display:grid}
+ .canvas .header nav :is(button,a){font-size:13px;justify-content:flex-start;padding:10px 14px;min-height:44px}
+ .canvas .nav-action{margin-left:auto;font-size:10px;padding-inline:10px;gap:6px}
+ .canvas .hero-copy{padding-top:12px}
+ .canvas .hero-copy h1{font-size:clamp(29px,8.2vw,36px);line-height:1.12}
+ .canvas .hero-copy p{margin-top:10px;font-size:13px;line-height:1.6}
+ .canvas .product-stage{margin-top:18px;gap:10px}
+ .canvas .inbox-rig{height:300px}
+ .canvas .inbox-rig .panel-top{height:32px}
+ .canvas .inbox-rig .inbox-grid{height:244px}
+ .canvas .inbox-rig .inbox-bottom{padding:6px 9px;font-size:8px}
+ .canvas .inbox-rig .conversation-list{display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain}
+ .canvas .inbox-rig .list-heading,.canvas .inbox-rig .list-tabs,.canvas .inbox-rig .conversation{flex-shrink:0}
+ .canvas .inbox-rig .list-heading{padding:9px 9px 6px}
+ .canvas .inbox-rig .list-tabs{padding:0 9px 7px;gap:6px}
+ .canvas .inbox-rig .conversation{padding:8px 9px}
+ .canvas .inbox-rig .list-footer{position:static;min-height:28px;margin-top:auto;padding:8px 9px;flex-shrink:0}
+ .canvas .inbox-rig .chat-heading{min-height:42px;padding:6px 8px}
+ .canvas .inbox-rig .chat-heading strong{font-size:11px}
+ .canvas .inbox-rig .chat-heading small{margin-top:2px}
+ .canvas .inbox-rig .messages{padding:8px;gap:7px}
+ .canvas .inbox-rig .today,.canvas .inbox-rig .message-author{display:none}
+ .canvas .inbox-rig .chat-controls{padding:6px;gap:4px;font-size:8px;line-height:1.5}
+ .canvas .flow-panel,.canvas .operation-panel{height:190px;min-height:190px}
+ .canvas .flow-panel .panel-top,.canvas .operation-panel .panel-top{min-height:34px;padding:7px 8px;font-size:11px}
+ .canvas .flow-panel .panel-body,.canvas .operation-panel .panel-body{display:flex;flex-direction:column;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:7px 8px}
+ .canvas .flow-panel .panel-body>* ,.canvas .operation-panel .panel-body>*{flex-shrink:0}
+ .canvas .flow{order:-1;margin:0;display:flex;flex-direction:column;gap:4px}
+ .canvas .flow-panel .node{position:relative;grid-template-columns:13px minmax(0,1fr);padding:5px 6px;line-height:1.3;flex-shrink:0}
+ .canvas .flow-panel .node>svg:last-child:not(:first-child){position:absolute;right:5px;top:8px}
+ .canvas .flow-panel .node>.dot{position:absolute;right:6px;top:10px}
+ .canvas .flow-panel .node small{font-size:9px;line-height:1.3;margin-top:3px}
+ .canvas .flow-panel .connector{height:4px;margin-left:13px;flex-shrink:0}
+ .canvas .flow-panel .connector.branch{order:1;height:auto;min-height:24px;margin-block:4px}
+ .canvas .flow-panel .panel-body h2{margin-top:12px}
+ .canvas .operation-stats{order:-2;margin:0;gap:6px}
+ .canvas .operation-stats>div{min-height:30px}
+ .canvas .operation-stats span{font-size:11px}
+ .canvas .allocation{order:-1;margin-block:12px}
+ .canvas .testar-access{padding-top:20px}
+}
+
+/* Fine proportions: keep the approved compact composition and its original interactions. */
+@media (max-width:800px){
+ .canvas .hero-copy{padding-top:22px}
+ .canvas .inbox-rig{--mobile-inbox-content-height:208px;width:calc(100% + 12px);margin-left:-6px;height:calc(var(--mobile-inbox-content-height) + 34px)}
+ .canvas .inbox-rig .inbox-grid{height:226px}
+ .canvas .inbox-rig .chat-controls{align-items:flex-end;gap:8px}
+ .canvas .inbox-rig .chat-controls>span{align-self:stretch}
+ .canvas .inbox-rig .chat-controls button{position:relative;align-self:flex-end;min-height:30px;width:auto;padding:5px 10px;border-radius:6px;line-height:1.4}
+ /* Preserve a 44px touch region around the quieter visible button. */
+ .canvas .inbox-rig .chat-controls button:before{content:'';position:absolute;inset:-7px -4px}
+ .canvas .flow-panel{height:220px;min-height:220px;align-self:start}
+ .canvas .operation-panel{height:172px;min-height:172px;align-self:start}
+ .canvas .flow-panel .panel-body{direction:rtl;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#52615e #202a2d}
+ .canvas .flow-panel .panel-body>*{direction:ltr}
+}
+
+/* Mobile microcopy and compact panels, sharing the existing conversation state. */
+@media (max-width:800px){
+ .canvas .home-copy-desktop{display:none}
+ .canvas .home-copy-mobile{display:inline}
+ .canvas .inbox-rig .inbox-grid{grid-template-columns:34% minmax(0,1fr);height:var(--mobile-inbox-content-height)}
+ .canvas .inbox-rig .inbox-bottom,.canvas .inbox-rig .list-footer{display:none}
+ .canvas .inbox-rig .conversation-copy>span,.canvas .inbox-rig .conversation-copy time{display:none}
+ .canvas .inbox-rig .conversation{min-height:50px;padding-block:7px}
+ .canvas .inbox-rig .conversation-copy strong{font-size:11px;line-height:1.4;white-space:normal}
+ .canvas .inbox-rig .conversation-copy small{margin-top:5px}
+ .canvas .inbox-rig .chat-controls{flex-direction:row;justify-content:space-between;align-items:center;gap:6px;padding:8px 6px;white-space:nowrap}
+ .canvas .inbox-rig .chat-controls>span{align-self:auto;white-space:nowrap;font-size:9px}
+ .canvas .inbox-rig .chat-controls button{align-self:auto;flex-shrink:0;white-space:nowrap;padding-inline:8px}
+ .canvas .flow-panel{height:auto;min-height:0;align-self:stretch}
+ .canvas .flow-panel .panel-body{display:block;overflow:visible;direction:ltr;scrollbar-gutter:auto;padding:8px}
+ .canvas .flow-panel .panel-body>h2,.canvas .flow-panel .live,.canvas .flow-panel .panel-note{display:none}
+ .canvas .flow{margin:0}
+ .canvas .flow-panel .connector.branch{margin-top:5px;margin-bottom:0;min-height:26px;height:auto}
+ .canvas .branch span{font-size:10px;line-height:1.4}
+ .canvas .mobile-operation-column{grid-column:2;grid-row:2;display:flex;flex-direction:column;gap:10px;align-self:center;min-width:0}
+ .canvas .mobile-operation-column .operation-panel{height:auto;min-height:0;flex:0 0 auto;grid-column:auto;grid-row:auto}
+ .canvas .operation-panel .panel-body{overflow:visible;padding:7px 8px 8px;min-height:0}
+ .canvas .operation-panel .panel-body>h2,.canvas .operation-panel .muted,.canvas .operation-panel .team-label,.canvas .operation-panel .team-member,.canvas .operation-panel .activity,.canvas .operation-panel .panel-note{display:none}
+ .canvas .operation-stats{gap:5px}
+ .canvas .operation-stats>div{min-height:26px}
+ .canvas .operation-stats strong{font-size:24px}
+ .canvas .allocation{margin:10px 0 0}
+ .canvas .mobile-attention-state{position:relative;inset:auto;transform:none;display:flex;flex:1 0 auto;align-items:center;gap:8px;width:100%;min-height:44px;padding:10px;box-sizing:border-box}
+ .canvas .mobile-attention-state>svg{flex-shrink:0}
+ .canvas .mobile-attention-state>span{font-size:11px;line-height:1.5;overflow-wrap:normal}
+}
+
+/* Lower mobile surfaces: one camera, with each interface on a rigid plane. */
+@media (max-width:800px){
+ .canvas .inbox-rig .chat-controls button{margin-right:8px}
+ .canvas .mobile-attention-state{flex:0 0 auto;min-height:0;padding:4px 10px;background:#202a2d;color:#e4eae7}
+}
+
+/* The left panel stays frontal. The right column is one rigid surface:
+   its entire left edge recedes, with no pitch or in-plane rotation. */
+@media (max-width:800px){
+ .canvas .product-stage{perspective:650px;perspective-origin:50% 35%}
+ .canvas .mobile-operation-column{transform:rotateY(-28deg);transform-origin:100% 50%;transform-style:flat;perspective:none;filter:none;backdrop-filter:none;width:round(down,100%,1px);justify-self:end}
+ .canvas .flow-panel,.canvas .mobile-operation-column .operation-panel,.canvas .mobile-attention-state{transform:none;filter:none;backdrop-filter:none;isolation:isolate;overflow:visible;background:transparent;border-color:transparent;box-shadow:none;--mobile-plate-edge:#52615e}
+ .canvas .flow-panel.highlight,.canvas .mobile-operation-column .operation-panel.highlight{--mobile-plate-edge:#97bdae}
+ .canvas .flow-panel:before,.canvas .mobile-operation-column .operation-panel:before,.canvas .mobile-attention-state:before{content:'';position:absolute;inset:-1px;z-index:-1;pointer-events:none;border:1px solid var(--mobile-plate-edge);border-radius:inherit;background:#202a2d;box-shadow:0 25px 50px -22px #243e4260;filter:none;backdrop-filter:none}
+ .canvas .flow-panel{transform:none}
+ .canvas .flow-panel:before,.canvas .mobile-operation-column .operation-panel:before,.canvas .mobile-attention-state:before{transform:none}
+ .canvas .mobile-operation-column .operation-panel:before{box-shadow:0 18px 32px -14px #263c3d55,inset 0 1px 0 #ffffff12}
+ .canvas .mobile-attention-state:before{background:#384449;box-shadow:0 12px 20px -16px #243e4260}
+}
+
+/* Narrow phones wrap the existing inbox tabs onto a second line. */
+@media (max-width:380px){
+ .canvas .inbox-rig{--mobile-inbox-content-height:227px}
+}
+
+.canvas .hero-subtitle-mobile{display:none}
+@media (max-width:800px){
+ .canvas .header .nav-action{display:none}
+ .canvas .mobile-nav-toggle{margin-left:auto}
+ /* Equal space above and below the visible subtitle, independent of the
+    desktop copy's line wrapping. The title and header keep their positions. */
+ .canvas .hero-copy p{position:relative;margin-top:36px}
+ .canvas .hero-subtitle-original{display:none}
+ .canvas .hero-subtitle-mobile{display:block;position:static}
+ .canvas .product-stage{margin-top:36px}
+}

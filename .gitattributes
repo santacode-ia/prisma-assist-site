@@ -1,0 +1,4 @@
+# Preserve the approved V1 reference bytes and their SHA-256 manifest across platforms.
+src/animations/ANIMATION_V1.ts -text
+docs/motion/ANIMATION_V1.original.tsx.txt -text
+docs/motion/ANIMATION_V1.loader-and-surface.css.txt -text

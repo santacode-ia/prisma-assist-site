@@ -1,0 +1,211 @@
+import {useLayoutEffect, useRef, useState, useSyncExternalStore, type RefObject} from 'react';
+
+const mobileQuery = '(max-width:800px)';
+const reducedQuery = '(prefers-reduced-motion: reduce)';
+const easeOut = 'cubic-bezier(0.23, 1, 0.32, 1)';
+const subscribeMobile = (notify:()=>void) => {
+  const query = matchMedia(mobileQuery);
+  query.addEventListener('change', notify);
+  return () => query.removeEventListener('change', notify);
+};
+export const useMobileHomepage = () => useSyncExternalStore(subscribeMobile, ()=>matchMedia(mobileQuery).matches, ()=>false);
+
+// Same-tab links/back navigation must not repeat a decorative loading screen.
+function shouldIntroduce() {
+  if (matchMedia(reducedQuery).matches) return false;
+  const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+  if (navigation?.type === 'back_forward') return false;
+  if (navigation?.type !== 'reload' && document.referrer) {
+    try { if (new URL(document.referrer).origin === location.origin) return false; } catch { /* no referrer */ }
+  }
+  return true;
+}
+
+export function CinematicText({text, className = ''}:{text:string;className?:string}) {
+  return <span className={className}><span className="cinematic-accessible">{text}</span><span aria-hidden="true">{text.split(' ').map((word, index)=><span key={index}>
+    {index > 0 ? ' ' : null}<span className="cinematic-word">{Array.from(word).map((letter, i)=><span className="cinematic-letter" key={i}>{letter}</span>)}</span>
+  </span>)}</span></span>;
+}
+
+// Coordinates copied verbatim from public/prisma-triangle.svg, the current official asset.
+const prismaPath = 'M627 342 296 904H953L627 342Z M627 342V728L296 904 M627 728 953 904';
+// The same six official edges, phased independently without changing the symbol.
+const prismaStrokes = ['M627 342 296 904','M296 904H953','M953 904 627 342','M627 342V728','M627 728 296 904','M627 728 953 904'];
+
+export function useMobileIntroduction(root:RefObject<HTMLElement|null>) {
+  const [loader, setLoader] = useState(()=>matchMedia(mobileQuery).matches && shouldIntroduce());
+  const overlay = useRef<HTMLDivElement>(null);
+  const [carouselReady,setCarouselReady] = useState(()=>!shouldIntroduce());
+
+  useLayoutEffect(()=>{
+    const page = root.current;
+    if (!page) return;
+    const mobile = matchMedia(mobileQuery), reduced = matchMedia(reducedQuery);
+    const isMobile = mobile.matches;
+    let disposed = false;
+    let animations:Animation[] = [];
+    let fallback:ReturnType<typeof setTimeout> | undefined;
+    const scene = page.querySelector<HTMLElement>('.mobile-operation-scene');
+    const stage = page.querySelector<HTMLElement>('.product-stage');
+
+    // Only the right-hand scene owns a camera. Front-facing text remains in 2D.
+    const align = () => {
+      if (!mobile.matches || !stage || !scene) return;
+      const previous = parseFloat(stage.style.getPropertyValue('--mobile-stage-snap')) || 0;
+      const top = stage.getBoundingClientRect().top + scrollY;
+      stage.style.setProperty('--mobile-stage-snap', `${previous + Math.round(top) - top}px`);
+      const a = stage.getBoundingClientRect(), b = scene.getBoundingClientRect();
+      scene.style.setProperty('--camera-x', `${a.width / 2 - (b.left - a.left)}px`);
+      scene.style.setProperty('--camera-y', `${a.height * .35 - (b.top - a.top)}px`);
+    };
+    align();
+    const observer = new ResizeObserver(align);
+    if (stage) observer.observe(stage);
+    const copy = page.querySelector('.hero-copy');
+    if (copy) observer.observe(copy);
+    document.fonts.ready.then(()=>{if (!disposed) align();});
+
+    const finish = () => {
+      clearTimeout(fallback);
+      animations.forEach(animation=>animation.cancel());
+      animations = [];
+      page.dataset.intro = 'complete';
+      if (!disposed) {setLoader(false);setCarouselReady(true);}
+    };
+    const onPreference = () => {align(); finish();};
+    const onInteraction = () => {if (page.dataset.intro !== 'complete') finish();};
+    const onScroll = () => {if (mobile.matches && page.dataset.intro === 'running' && scrollY > 60) onInteraction();};
+    const onWheel = () => {if (!mobile.matches) onInteraction();};
+    mobile.addEventListener('change', onPreference);
+    reduced.addEventListener('change', onPreference);
+    page.addEventListener('pointerdown', onInteraction, {capture:true});
+    window.addEventListener('keydown', onInteraction, {capture:true});
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('wheel', onWheel, {passive:true});
+
+    if (shouldIntroduce() && typeof page.animate === 'function') {
+      try {
+        page.dataset.intro = isMobile?'loader':'running';
+        window.scrollTo({top:0,behavior:'instant'});
+        const start = document.timeline.currentTime as number;
+        const animate = (element:Element|null, frames:Keyframe[], at:number, duration:number, id:string, easing=easeOut) => {
+          if (!element) return;
+          const animation = element.animate(frames, {delay:at, duration, easing, fill:'both'});
+          animation.id = `prisma-${id}`;
+          animation.startTime = start;
+          animations.push(animation);
+          // Cancel, rather than retain identity transforms/filter:blur(0), at rest.
+          // The fading overlay must stay transparent until React unmounts it;
+          // cancelling it first would briefly restore its opaque base style.
+          if (id !== 'loader-exit') animation.finished.then(()=>animation.cancel()).catch(()=>{});
+          return animation;
+        };
+        const titleEntrance = isMobile?3440:0;
+        const titleLetters = page.querySelectorAll('#headline .cinematic-letter');
+        const firstPhraseLength = Array.from('Mais inteligência,'.replace(/\s/g,'')).length;
+        const characterStagger = 16, characterDuration = 520, firstTitlePause = 180, secondTitlePause = 80;
+        const firstPhraseEnd = (firstPhraseLength-1)*characterStagger+characterDuration;
+        const secondPhraseStart = firstPhraseEnd+firstTitlePause;
+        const titleEnd = secondPhraseStart+(titleLetters.length-firstPhraseLength-1)*characterStagger+characterDuration;
+        // Shift the existing continuation as a unit; all its internal timings stay intact.
+        const entrance = titleEntrance+titleEnd+secondTitlePause-780;
+        const reveal = (selector:string, at:number, duration=300, scale=false, clock=entrance) => {
+          // Individual properties leave desktop's CSS perspective and Tilt transforms intact.
+          const frames:Keyframe[] = isMobile ? [
+            {opacity:0, transform:scale?'scale(0.978)':'translateY(4px)'}, {opacity:1, transform:'none'}
+          ] : scale ? [
+            {scale:'0.978'}, {scale:'1'}
+          ] : [{opacity:0, translate:'0 4px'}, {opacity:1, translate:'none'}];
+          return animate(page.querySelector(selector),frames,clock+at,duration,selector,scale?'cubic-bezier(0.77, 0, 0.175, 1)':easeOut);
+        };
+        if (isMobile) {
+          const loaderExit = animate(overlay.current, [{opacity:1},{opacity:0}], 3200, 240, 'loader-exit');
+          loaderExit?.finished.then(()=>{
+            if (!disposed) {window.scrollTo({top:0,behavior:'instant'});setLoader(false); page.dataset.intro = 'running';}
+          }).catch(()=>{});
+        }
+        titleLetters.forEach((letter, i)=>animate(letter,
+          [{opacity:0, filter:'blur(7px)'},{opacity:1, filter:'none'}],
+          titleEntrance+(i<firstPhraseLength?i*characterStagger:secondPhraseStart+(i-firstPhraseLength)*characterStagger),
+          characterDuration, `title-${i}`));
+        // Overlap the settling tail of each scene with the next entrance.
+        if (!isMobile) animate(page.querySelector('.inbox-rig'),[{opacity:0},{opacity:1}],entrance+780,560,'inbox-frame','cubic-bezier(0.77, 0, 0.175, 1)');
+        reveal(isMobile?'.inbox-rig':'.inbox-tilt', 780, 560, true);
+        const laterEntrance = entrance-180;
+        const revealLater = (selector:string,at:number,duration=300)=>reveal(selector,at,duration,false,laterEntrance);
+        const flowDelay = 480;
+        const revealSide = (selector:string,at:number,direction:number) => animate(page.querySelector(selector),
+          [{opacity:0,translate:`${direction*(isMobile?6:18)}px 0`,scale:'0.978'},{opacity:1,translate:'none',scale:'none'}],
+          laterEntrance+at,560,selector,'cubic-bezier(0.77, 0, 0.175, 1)');
+        revealSide('.flow-panel',1180+flowDelay,-1);
+        if (!isMobile) {
+          revealLater('.flow-panel .panel-body h2',1450+flowDelay,280);
+          revealLater('.flow-panel .live',1450+flowDelay,280);
+          revealLater('.flow-panel .panel-note',2630+flowDelay,280);
+        }
+        const nodes = page.querySelectorAll('.flow-panel .node');
+        [1450,1830,2220].forEach((at,i)=>animate(nodes[i], [{opacity:0,transform:'translateY(3px)'},{opacity:1,transform:'none'}], laterEntrance+at+flowDelay,280,`flow-card-${i}`));
+        const lines = isMobile ? [page.querySelector('.flow > .connector:not(.branch)'),page.querySelector('.mobile-flow-bridge'),page.querySelector('.flow > .connector.branch')]
+          : [page.querySelector('.flow > .connector:not(.branch)'),page.querySelector('.flow > .connector.branch')];
+        [1650,2030,2430].forEach((at,i)=>animate(lines[i], [{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0 0)'}], laterEntrance+at+flowDelay,240,`flow-line-${i}`,'linear'));
+        page.querySelectorAll('.branch .cinematic-letter').forEach((letter,i)=>animate(letter,
+          [{opacity:0},{opacity:1}], laterEntrance+2630+flowDelay+i*12,220,`flow-text-${i}`));
+        const operationAt = 1180+flowDelay+130;
+        revealSide('.operation-panel',operationAt,1);
+        {
+          ['.panel-body h2','.panel-body > .muted','.operation-stats span','.team-label','.team-member','.activity','.panel-note'].forEach((selector,i)=>page.querySelectorAll(`.operation-panel ${selector}`).forEach((element,j)=>animate(element,[{opacity:0,translate:'0 3px'},{opacity:1,translate:'none'}],laterEntrance+operationAt+180+i*45+j*35,280,`operation-label-${i}-${j}`)));
+          page.querySelectorAll('.operation-stats strong').forEach((element,i)=>animate(element,[{opacity:0,translate:'0 4px'},{opacity:1,translate:'none'}],laterEntrance+operationAt+280+i*55,320,`operation-number-${i}`));
+          page.querySelectorAll('.allocation i').forEach((element,i)=>animate(element,[{transform:'scaleX(0)',transformOrigin:'left'},{transform:'none',transformOrigin:'left'}],laterEntrance+operationAt+350+i*70,500,`operation-bar-${i}`));
+        }
+        if (isMobile) revealLater('.mobile-attention-state', operationAt+920, 320);
+        // Both viewports use Agente de IA to launch the closing phase.
+        const closingAt = 1830+flowDelay;
+        animate(page.querySelector(isMobile?'.hero-subtitle-mobile':'.hero-subtitle-original'), [{opacity:0,filter:'blur(5px)'},{opacity:1,filter:'none'}], laterEntrance+closingAt,620,'subtitle','cubic-bezier(0.77, 0, 0.175, 1)');
+        const controls = isMobile?page.querySelectorAll('.mobile-nav-toggle'):page.querySelectorAll('.header nav > button,.header nav > a,.header > .nav-action');
+        const navigationAt = closingAt+780;
+        const brandingAt = Math.max(
+          ...animations.map(a=>{const t=a.effect!.getTiming();return Number(t.delay)+Number(t.duration)-laterEntrance;}),
+          navigationAt+500,
+          navigationAt+(controls.length-1)*(isMobile?40:80)+300
+        );
+        const ctaAt = brandingAt+340+140;
+        animate(page.querySelector('.header .brand'),[{opacity:0,translate:'0 3px'},{opacity:1,translate:'none'}],laterEntrance+brandingAt,340,'branding');
+        const cta = revealLater('.testar-cta', ctaAt, 420);
+        const last = revealLater('.reference-carousel',navigationAt,500);
+        const navigation = Array.from(controls).map((element,i)=>animate(element,
+          [{opacity:0,translate:isMobile?'0 3px':'0 7px'},{opacity:1,translate:'none'}],
+          laterEntrance+navigationAt+i*(isMobile?40:80),300,`navigation-${i}`));
+        const navigationFinished = Promise.all([last,...navigation].filter((a):a is Animation=>Boolean(a)).map(a=>a.finished));
+        navigationFinished.then(()=>{if (!disposed) setCarouselReady(true);}).catch(()=>{});
+        Promise.all([navigationFinished,cta?.finished]).then(finish).catch(()=>{});
+        fallback = setTimeout(finish, laterEntrance+Math.max(closingAt+1580,ctaAt+420)+2000);
+      } catch { finish(); }
+    } else finish();
+
+    return ()=>{
+      disposed = true;
+      finish();
+      observer.disconnect();
+      stage?.style.removeProperty('--mobile-stage-snap');
+      scene?.style.removeProperty('--camera-x');
+      scene?.style.removeProperty('--camera-y');
+      mobile.removeEventListener('change', onPreference);
+      reduced.removeEventListener('change', onPreference);
+      page.removeEventListener('pointerdown', onInteraction, true);
+      window.removeEventListener('keydown', onInteraction, true);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('wheel', onWheel);
+    };
+  }, [root]);
+
+  return {loader, overlay, carouselReady};
+}
+
+export default function MobileHomepageExperience({loader,overlay}:{loader:boolean;overlay:RefObject<HTMLDivElement|null>}) {
+  return loader ? <div ref={overlay} className="prisma-loader" aria-hidden="true">
+    <svg viewBox="280 326 690 594" fill="none" stroke="#000" strokeWidth="17" strokeLinejoin="miter">
+      <path d={prismaPath} opacity=".16"/>
+      {prismaStrokes.map((d,index)=><path key={d} d={d} pathLength="1" className="prisma-loader-stroke" style={{animationDelay:`${index*160}ms`}}/>)}
+    </svg>
+  </div> : null;
+}

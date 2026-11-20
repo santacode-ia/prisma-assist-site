@@ -1,0 +1,132 @@
+/* OCEANIC PRECISION: three distinct product surfaces, one shared family. */
+.canvas {
+  --prisma-ivory:#eee3cc;
+  --prisma-ice:#e6f0fa;
+  --prisma-ocean:#174a7c;
+  --prisma-aqua:#2fd3a0;
+  --prisma-ocean-raised:#286494;
+  --prisma-ice-depth:#cfe1f3;
+  --prisma-ui-ink:#142b40;
+  --prisma-ui-raised:#ffffff;
+  --prisma-ui-muted:#40566b;
+  --prisma-ui-line:#174a7c30;
+  --prisma-ui-border:#174a7c66;
+  --prisma-ui-surface:linear-gradient(155deg,#ffffff,#f6faff 60%,var(--prisma-ice));
+  background:var(--prisma-ivory);
+}
+.canvas .hero {
+  background:linear-gradient(180deg,#ffffff 0px,#ffffff 300px,#faf9f5 560px,#f2ebdd 900px,var(--prisma-ivory) 1300px);
+}
+.canvas .hero:before {
+  background:radial-gradient(ellipse 38% 42% at 24% 62%,#c6bba230,transparent),
+    radial-gradient(ellipse 32% 40% at 82% 55%,#bcb4a428,transparent),
+    linear-gradient(180deg,transparent,#e5dac3 85%);
+}
+.canvas .product-stage {
+  --panel:var(--prisma-ice);
+  --line:var(--prisma-ui-line);
+}
+.canvas .product-stage :is(.flow-panel,.inbox-panel,.operation-panel) {
+  background:var(--prisma-ui-surface);
+  color:var(--prisma-ui-ink);
+  border-color:var(--prisma-ui-border);
+  --mobile-plate-edge:var(--prisma-ui-border);
+}
+.canvas .product-stage :is(.flow-panel,.inbox-panel,.operation-panel).highlight {
+  border-color:var(--prisma-ocean);
+  --mobile-plate-edge:var(--prisma-ocean);
+}
+.canvas .product-stage :is(.flow-panel,.operation-panel) {
+  box-shadow:0 38px 48px -18px #174a7c1c,0 15px 25px -12px #174a7c1f,inset 0 1px 0 #ffffffcc;
+}
+.canvas .product-stage .inbox-rig:before {
+  box-shadow:0 44px 56px -14px #174a7c2b,0 16px 32px -8px #174a7c1f,
+    -28px 10px 28px -18px #174a7c18,28px 10px 28px -18px #174a7c18;
+}
+.canvas .product-stage .flow-panel:after {background:linear-gradient(90deg,transparent 72%,#174a7c0a)}
+.canvas .product-stage .operation-panel:after {background:linear-gradient(270deg,transparent 72%,#174a7c0a)}
+.canvas .product-stage :is(.panel-top,.panel-note,.muted,.team-label,.workspace) {color:var(--prisma-ui-muted)}
+.canvas .product-stage :is(.panel-body h2,.list-heading h2,.chat-heading strong,.operation-stats strong,.team-member strong,.activity strong) {color:var(--prisma-ui-ink)}
+.canvas .product-stage .panel-top {background:var(--prisma-ocean);color:var(--prisma-ice);border-bottom-color:#e6f0fa33;border-radius:12px 12px 0 0}
+.canvas .product-stage .panel-top .workspace {color:#d0e2f2}
+.canvas .product-stage .node {background:var(--prisma-ui-raised);border-color:var(--prisma-ui-line);color:var(--prisma-ui-ink)}
+.canvas .product-stage .node small {color:var(--prisma-ui-muted)}
+.canvas .product-stage .node.running {background:var(--prisma-ocean);border-color:var(--prisma-aqua);color:var(--prisma-ice);box-shadow:inset 3px 0 var(--prisma-aqua)}
+.canvas .product-stage .node.running small {color:var(--prisma-ice)}
+.canvas .product-stage .node.running>svg:first-child {color:var(--prisma-aqua)}
+.canvas .product-stage :is(.live,.team-label>span) {color:var(--prisma-ocean)}
+.canvas .product-stage :is(.dot,.live:before) {background:var(--prisma-aqua);box-shadow:0 0 0 1px var(--prisma-ocean)}
+.canvas .product-stage :is(.connector,.mobile-flow-bridge) {border-left-color:var(--prisma-ocean)}
+.canvas .product-stage .branch span {color:var(--prisma-ocean)}
+.canvas .product-stage .conversation-list {background:#dce9f6;border-right-color:var(--prisma-ui-line)}
+.canvas .product-stage .list-heading>span {background:var(--prisma-ocean);color:#ffffff}
+.canvas .product-stage .list-heading>svg {color:var(--prisma-ui-muted)}
+.canvas .product-stage .list-tabs {color:var(--prisma-ui-muted)}
+.canvas .product-stage .list-tabs span:first-child {color:var(--prisma-ui-ink)}
+.canvas .product-stage .list-tabs b {color:var(--prisma-ocean)}
+.canvas .product-stage .conversation {color:var(--prisma-ui-ink);border-top-color:#174a7c0a}
+.canvas .product-stage .conversation:hover {background:#174a7c08}
+.canvas .product-stage .conversation.selected {background:#cfe5f4;box-shadow:inset 3px 0 var(--prisma-ocean)}
+.canvas .product-stage .conversation.selected strong {color:var(--prisma-ocean)}
+.canvas .product-stage .conversation.selected .avatar {background:var(--prisma-ocean);color:var(--prisma-ice)}
+.canvas .product-stage .avatar {background:#e6f0fa;color:var(--prisma-ui-ink)}
+.canvas .product-stage .avatar-1 {background:#edf2f6}
+.canvas .product-stage .avatar-2 {background:#e9f1f8}
+.canvas .product-stage :is(.conversation-copy time,.conversation-copy>span,.conversation-copy small,.list-footer,.chat-heading small,.chat-heading>svg,.today,.bubble time,.message-author,.context,.chat-controls,.inbox-bottom,.operation-stats span,.team-member small,.activity p) {color:var(--prisma-ui-muted)}
+.canvas .product-stage .bubble {background:#ffffff;color:var(--prisma-ui-ink)}
+.canvas .product-stage .chat {background:#f1f7fd}
+.canvas .product-stage .chat-heading,.canvas .product-stage .chat-controls {background:var(--prisma-ice)}
+.canvas .product-stage .chat-heading .avatar {background:var(--prisma-ocean);color:var(--prisma-ice)}
+.canvas .product-stage .bubble.outgoing {background:var(--prisma-ocean);color:#ffffff}
+.canvas .product-stage .outgoing time {color:#d0e5f6}
+.canvas .product-stage :is(.message-author svg,.outgoing time svg,.context svg) {color:var(--prisma-ocean)}
+.canvas .product-stage .outgoing time svg {color:var(--prisma-aqua)}
+.canvas .product-stage .message-author,.canvas .product-stage .context {color:var(--prisma-ocean)}
+.canvas .product-stage .chat-controls button {background:var(--prisma-ocean);border-color:var(--prisma-ocean);color:#ffffff}
+.canvas .product-stage .chat-controls button:hover {background:var(--prisma-ocean-raised);border-color:var(--prisma-ocean-raised)}
+.canvas .product-stage .allocation i:first-child {background:var(--prisma-ocean)}
+.canvas .product-stage .allocation i:last-child {background:var(--prisma-aqua)}
+.canvas .product-stage .activity-dot {border-color:var(--prisma-ocean)}
+.canvas .product-stage :is(button,a):focus-visible {outline-color:var(--prisma-ocean)}
+.canvas .product-stage ::selection {background:var(--prisma-ice);color:var(--prisma-ocean)}
+
+/* Blue Ice flow: a clearly blue exterior, light stages, one decisive active step. */
+.canvas .product-stage .flow-panel {
+  --prisma-ui-surface:linear-gradient(155deg,var(--prisma-ice),var(--prisma-ice-depth));
+}
+
+/* Ocean signature: local tokens invert only this panel, not the whole product. */
+.canvas .product-stage .operation-panel {
+  --prisma-ui-surface:var(--prisma-ocean);
+  --prisma-ui-ink:var(--prisma-ice);
+  --prisma-ui-muted:#d0e2f2;
+  --prisma-ui-line:#e6f0fa33;
+  --prisma-ui-border:#5c8bb6;
+  --line:#e6f0fa33;
+}
+.canvas .product-stage .operation-panel:after {background:transparent}
+.canvas .product-stage .operation-panel.highlight {border-color:var(--prisma-aqua);--mobile-plate-edge:var(--prisma-aqua)}
+.canvas .product-stage .operation-panel .team-label>span {color:var(--prisma-aqua)}
+.canvas .product-stage .operation-panel .avatar {background:var(--prisma-ocean-raised);color:var(--prisma-ice)}
+.canvas .product-stage .operation-panel .activity {background:#1d5587}
+.canvas .product-stage .operation-panel .activity-dot {border-color:var(--prisma-aqua)}
+.canvas .product-stage .operation-panel .allocation i:first-child {background:var(--prisma-aqua)}
+.canvas .product-stage .operation-panel .allocation i:last-child {background:#c8dff2}
+
+@media(max-width:800px) {
+  /* Preserve mobile's single painted plate instead of adding a second surface. */
+  .canvas .product-stage :is(.flow-panel,.operation-panel) {background:transparent;border-color:transparent;box-shadow:none}
+  .canvas .product-stage :is(.flow-panel,.operation-panel).highlight {border-color:transparent}
+  .canvas .product-stage .flow-panel:before,
+  .canvas .product-stage .mobile-operation-column .operation-panel:before {
+    background:var(--prisma-ui-surface);
+    border-color:var(--mobile-plate-edge);
+    box-shadow:0 22px 38px -15px #174a7c24,0 6px 14px -9px #174a7c16,inset 0 1px 0 #ffffffcc;
+  }
+  .canvas .product-stage .flow-panel .panel-body {scrollbar-color:#b4cadf var(--prisma-ice)}
+  .canvas .product-stage .mobile-attention-state {color:#4d6073}
+}
+
+/* Quiet strokes on near-white surfaces, without adding layout borders. */
+.canvas .product-stage .inbox-panel{box-shadow:inset 0 1px 0 #ffffffcc}
+.canvas .product-stage .bubble{box-shadow:inset 0 0 0 1px var(--prisma-ui-line)}

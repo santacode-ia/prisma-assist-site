@@ -47,6 +47,7 @@ const ScrollStack = ({
   smoothScroll = true,
   snap = false,
   useWindowScroll = false,
+  fitViewport = false,
   onStackComplete
 }) => {
   const rootRef = useRef(null);
@@ -70,6 +71,7 @@ const ScrollStack = ({
       holdDistance,
       smoothScroll,
       snap,
+      fitViewport,
       onStackComplete
     };
     scheduleRef.current?.();
@@ -124,8 +126,11 @@ const ScrollStack = ({
       const stackTop = resolveOffset(settings.stackPosition, viewHeight);
       const offset = settings.itemStackDistance;
       const heights = slots.map(slot => slot.offsetHeight);
+      // Tall phone cards scroll completely into view before their bottom edge pins.
+      const pins = heights.map((height,i)=>settings.fitViewport ? Math.min(stackTop+i*offset,viewHeight-height-16) : stackTop+i*offset);
+      const lastPin = pins[pins.length-1];
+      if(settings.fitViewport)slots.forEach((slot,i)=>write(`pin${i}`,pins[i],value=>{slot.style.top=`${value}px`;}));
       const tops = slots.map(slot => slot.getBoundingClientRect().top);
-      const lastPin = stackTop + (slots.length - 1) * offset;
       const padTop = windowed ? 0 : stackTop;
       const endHeight =
         settings.holdDistance + (windowed ? 0 : Math.max(0, viewHeight - lastPin - heights[heights.length - 1]));
@@ -140,7 +145,7 @@ const ScrollStack = ({
 
       let flow = inner.getBoundingClientRect().top - viewTop + readScroll() + padTop;
       points = heights.map((height, i) => {
-        const point = flow - stackTop - i * offset;
+        const point = flow - pins[i];
         flow += height + settings.itemDistance;
         return point;
       });
@@ -149,7 +154,7 @@ const ScrollStack = ({
       const depths = slots.map(() => 0);
       let lastCover = 0;
       for (let j = 1; j < slots.length; j++) {
-        const pinBefore = viewTop + stackTop + (j - 1) * offset;
+        const pinBefore = viewTop + pins[j-1];
         const start = pinBefore + heights[j - 1];
         const span = Math.max(1, start - pinBefore - offset);
         const cover = Math.min(1, Math.max(0, (start - tops[j]) / span));
